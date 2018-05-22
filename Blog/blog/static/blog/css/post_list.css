@@ -1,0 +1,18 @@
+.estilo1 {
+    color: red;
+    font-family: 'Lobster';
+}
+
+.estilo2 {
+    color: green;
+    font-family: 'Satisfy';
+}
+
+body {
+    padding-left: 15px;
+}
+
+p {
+    padding-left: 30px;
+}
+
