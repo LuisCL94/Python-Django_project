@@ -8,7 +8,6 @@ class PostView(generic.ListView):
     model = Post
     context_object_name = 'posts'
 
-
 class PersonView(generic.ListView):
     template_name = 'blog/person_list.html'
     model = Person
@@ -23,3 +22,7 @@ class UriDetailView(generic.ListView):
     template_name = 'blog/uri_detail.html'
     model = Uri
     context_object_name = 'uri_detail'
+
+class TestView(generic.TemplateView):
+    template_name = 'blog/test.html'
+        
