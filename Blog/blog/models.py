@@ -24,3 +24,8 @@ class Person(models.Model):
     def __str__(self):
         return self.first_name
 
+class Uri(models.Model):
+    uri_title = models.CharField(max_length=30)
+    c_code = models.TextField()
+    def __str__(self):
+        return self.uri_title
