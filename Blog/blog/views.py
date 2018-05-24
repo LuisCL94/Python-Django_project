@@ -1,12 +1,14 @@
 from django.shortcuts import render_to_response
 from django.views import generic
 from .models import Post, Person, Uri
+from django.shortcuts import render, get_object_or_404
+from django.conf.urls import url
 
 # Create your views here.
 class PostView(generic.ListView):
-    template_name = 'blog/post_list.html'
     model = Post
-    context_object_name = 'posts'
+    #template_name = 'blog/post_list.html'
+    #context_object_name = 'object_list' ou 'post_list'
 
 class PersonView(generic.ListView):
     template_name = 'blog/person_list.html'
@@ -14,15 +16,11 @@ class PersonView(generic.ListView):
     context_object_name = 'persons'    
 
 class UriListView(generic.ListView):
-    template_name = 'blog/uri_list.html'
     model = Uri
-    context_object_name = 'uri_list'
-
-class UriDetailView(generic.ListView):
-    template_name = 'blog/uri_detail.html'
+   
+class UriDetailView(generic.DetailView):
     model = Uri
-    context_object_name = 'uri_detail'
-
-class TestView(generic.TemplateView):
+    
+class IndexView(generic.TemplateView):
     template_name = 'blog/test.html'
         

@@ -1,7 +1,7 @@
 {% for uri in uri_list %}
         
-        <li>
-        	<a href="{% url 'blog:uri_detail' %}"> {{ uri.uri_title }} </a>
-		</li>
+        <h3><li>
+        	<a href="{% url 'blog:uri_detail' uri.id %}"> {{ uri.uri_title }} </a>
+		</li></h3>
     
 {% endfor %}
