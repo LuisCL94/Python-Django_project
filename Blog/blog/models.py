@@ -1,31 +1,24 @@
 from django.db import models
 from django.utils import timezone
 
-
-class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
-
+class Category(models.Model):
+    uri_categories = models.CharField(max_length=30)
     def __str__(self):
-        return self.title
-
-class Person(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    age = models.IntegerField(default=0)
-
+        return self.uri_categories
+        
+class Language(models.Model):
+    programming_language = models.CharField(max_length=30)
     def __str__(self):
-        return self.first_name
+        return self.programming_language
 
 class Uri(models.Model):
-    uri_title = models.CharField(max_length=30)
-    c_code = models.TextField()
+    title = models.CharField(max_length=30)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE )
+    number = models.IntegerField(default=None) 
+    language_type = models.ForeignKey(Language, on_delete=models.CASCADE)
+    code = models.TextField()
+    pub_date = models.DateTimeField(blank=False, null=True)
     def __str__(self):
-        return self.uri_title
+        return "%s  - URI%s - %s - %s" % (self.category, self.number, self.title,
+                self.language_type)
+
